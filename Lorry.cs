@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_cv5
 {
-    class Lorry : Car
+    public class Lorry : Car
     {
         public int MaxCargo { get; private set; }
         private int currentCargo;

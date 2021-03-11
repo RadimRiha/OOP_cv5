@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_cv5
 {
-    class Car
+    abstract public class Car
     {
         public enum FuelTypes
         {

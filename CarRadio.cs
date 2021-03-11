@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP_cv5
 {
-    class CarRadio
+    public class CarRadio
     {
-        public double? TunedFrequency { get; private set; }
+        public double? TunedFrequency;
         public bool RadioOn;
         private Dictionary<int, double> presets = new Dictionary<int, double>();
         public CarRadio()
