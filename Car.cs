@@ -13,21 +13,12 @@ namespace OOP_cv5
             Petrol,
             Diesel
         }
-        protected float fuelTankSize;
-        protected float fuelGauge;
-        protected FuelTypes fuelType;
-        public float FuelTankSize
-        {
-            get
-            {
-                return fuelTankSize;
-            }
-            protected set
-            {
-                fuelTankSize = value;
-            }
-        }
-        public float FuelGauge
+        public double FuelTankSize { get; protected set; }
+        protected double fuelGauge;
+        public FuelTypes FuelType { get; protected set; }
+        public CarRadio Radio = new CarRadio();
+
+        public double FuelGauge
         {
             get
             {
@@ -35,26 +26,15 @@ namespace OOP_cv5
             }
             set
             {
-                if (value > fuelTankSize) throw new Exception("Not enough space for specified amount of fuel!");
+                if (value > FuelTankSize) throw new Exception("Not enough space for specified amount of fuel!");
                 fuelGauge = value;
             }
         }
-        public FuelTypes FuelType
+        public void Refuel(FuelTypes fuelType, double fuelAmount)
         {
-            get
-            {
-                return fuelType;
-            }
-            protected set
-            {
-                fuelType = value;
-            }
-        }
-        public void Refuel(FuelTypes fuelType, float fuelAmount)
-        {
-            if (fuelType != this.fuelType) throw new Exception("Tried to refuel the wrong type of fuel!");
-            if (fuelAmount + fuelGauge > fuelTankSize) throw new Exception("Not enough space for specified amount of fuel!");
-            fuelGauge += fuelAmount;
+            if (fuelType != this.FuelType) throw new Exception("Tried to refuel the wrong type of fuel!");
+            if (fuelAmount + FuelGauge > FuelTankSize) throw new Exception("Not enough space for specified amount of fuel!");
+            FuelGauge += fuelAmount;
         }
     }
 }

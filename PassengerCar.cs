@@ -8,19 +8,9 @@ namespace OOP_cv5
 {
     class PassengerCar : Car
     {
-        private int maxPassengers;
+        public int MaxPassengers { get; private set; }
         private int currentPassengers;
-        public int MaxPassengers
-        {
-            get
-            {
-                return maxPassengers;
-            }
-            private set
-            {
-                maxPassengers = value;
-            }
-        }
+
         public int CurrentPassengers
         {
             get
@@ -29,17 +19,21 @@ namespace OOP_cv5
             }
             set
             {
-                if (value > maxPassengers) throw new Exception("Not enough space for specified number of passengers!");
+                if (value > MaxPassengers) throw new Exception("Not enough space for specified number of passengers!");
                 currentPassengers = value;
             }
         }
-        public PassengerCar(float fuelTankSize, FuelTypes fuelType, int maxPassengers)
+        public PassengerCar(double fuelTankSize, FuelTypes fuelType, int maxPassengers)
         {
-            this.fuelTankSize = fuelTankSize;
-            this.fuelType = fuelType;
-            this.maxPassengers = maxPassengers;
-            fuelGauge = 0;
-            currentPassengers = 0;
+            this.FuelTankSize = fuelTankSize;
+            this.FuelType = fuelType;
+            this.MaxPassengers = maxPassengers;
+            FuelGauge = 0;
+            CurrentPassengers = 0;
+        }
+        public override string ToString()
+        {
+            return string.Format("Fuel tank size: {0}l\nCurrent fuel: {1}l\nFuel type: {2}\nMaximum passengers: {3}\nCurrent passengers: {4}\n", FuelTankSize, FuelGauge, FuelType, MaxPassengers, CurrentPassengers);
         }
     }
 }

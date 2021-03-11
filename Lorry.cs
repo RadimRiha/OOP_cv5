@@ -8,38 +8,32 @@ namespace OOP_cv5
 {
     class Lorry : Car
     {
-        private int maxCargo;
+        public int MaxCargo { get; private set; }
         private int currentCargo;
-        public int MaxCargo
-        {
-            get
-            {
-                return maxCargo;
-            }
-            private set
-            {
-                maxCargo = value;
-            }
-        }
+
         public int CurrentCargo
         {
             get
             {
                 return currentCargo;
             }
-            private set
+            set
             {
-                if (value > maxCargo) throw new Exception("Not enough space for specified amount of cargo!");
+                if (value > MaxCargo) throw new Exception("Not enough space for specified amount of cargo!");
                 currentCargo = value;
             }
         }
-        public Lorry(float fuelTankSize, FuelTypes fuelType, int maxCargo)
+        public Lorry(double fuelTankSize, FuelTypes fuelType, int maxCargo)
         {
-            this.fuelTankSize = fuelTankSize;
-            this.fuelType = fuelType;
-            this.maxCargo = maxCargo;
-            fuelGauge = 0;
-            currentCargo = 0;
+            this.FuelTankSize = fuelTankSize;
+            this.FuelType = fuelType;
+            this.MaxCargo = maxCargo;
+            FuelGauge = 0;
+            CurrentCargo = 0;
+        }
+        public override string ToString()
+        {
+            return string.Format("Fuel tank size: {0}l\nCurrent fuel: {1}l\nFuel type: {2}\nMaximum cargo: {3}kg\nCurrent cargo: {4}kg\n", FuelTankSize, this.FuelGauge, FuelType, MaxCargo, this.CurrentCargo);
         }
     }
 }
